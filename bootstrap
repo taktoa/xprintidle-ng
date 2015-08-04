@@ -1,6 +1,6 @@
 #! /bin/sh
 # Print a version string.
-scriptversion=2013-12-05.23; # UTC
+scriptversion=2015-08-04.22; # UTC
 
 # Bootstrap this package from checked-out sources.
 
@@ -45,7 +45,7 @@ local_gl_dir=gl
 
 me=$0
 
-usage() {
+usage () {
   cat <<EOF
 Usage: $me [OPTION]...
 Bootstrap this package from the checked-out sources.
@@ -103,7 +103,7 @@ warn_ ()
 }
 
 # die WORD1...
-die() { warn_ "$@"; exit 1; }
+die () { warn_ "$@"; exit 1; }
 
 # Configuration.
 
@@ -121,11 +121,11 @@ gnulib_files=
 
 # A function to be called right after gnulib-tool is run.
 # Override it via your own definition in bootstrap.conf.
-bootstrap_post_import_hook() { :; }
+bootstrap_post_import_hook () { :; }
 
 # A function to be called after everything else in this script.
 # Override it via your own definition in bootstrap.conf.
-bootstrap_epilogue() { :; }
+bootstrap_epilogue () { :; }
 
 # The command to download all .po files for a specified domain into
 # a specified directory.  Fill in the first %s is the domain name, and
@@ -133,11 +133,6 @@ bootstrap_epilogue() { :; }
 # options because the latest/%s directory and the .po files within are
 # all symlinks.
 po_download_command_format=\
-"rsync --delete --exclude '*.s1' -Lrtvz \
- 'translationproject.org::tp/latest/%s/' '%s'"
-
-# Fallback for downloading .po files (if rsync fails).
-po_download_command_format2=\
 "wget --mirror -nd -q -np -A.po -P '%s' \
  http://translationproject.org/latest/%s/"
 
@@ -184,8 +179,8 @@ XGETTEXT_OPTIONS='\\\
 '
 
 # Package bug report address and copyright holder for gettext files
-COPYRIGHT_HOLDER='Free Software Foundation, Inc.'
-MSGID_BUGS_ADDRESS=bug-$package@gnu.org
+COPYRIGHT_HOLDER='Magnus Henoch'
+MSGID_BUGS_ADDRESS="taktoa@gmail.com"
 
 # Files we don't want to import.
 excluded_files=
@@ -210,7 +205,7 @@ bootstrap_sync=false
 # Use git to update gnulib sources
 use_git=true
 
-check_exists() {
+check_exists () {
   if test "$1" = "--verbose"; then
     ($2 --version </dev/null) >/dev/null 2>&1
     if test $? -ge 126; then
@@ -317,7 +312,7 @@ if test -n "$checkout_only_file" && test ! -r "$checkout_only_file"; then
 fi
 
 # Strip blank and comment lines to leave significant entries.
-gitignore_entries() {
+gitignore_entries () {
   sed '/^#/d; /^$/d' "$@"
 }
 
@@ -325,7 +320,7 @@ gitignore_entries() {
 # Entries are inserted at the start of the ignore list to ensure existing
 # entries starting with ! are not overridden.  Such entries support
 # whitelisting exceptions after a more generic blacklist pattern.
-insert_if_absent() {
+insert_if_absent () {
   file=$1
   str=$2
   test -f $file || touch $file
@@ -344,7 +339,7 @@ insert_if_absent() {
 
 # Adjust $PATTERN for $VC_IGNORE_FILE and insert it with
 # insert_if_absent.
-insert_vc_ignore() {
+insert_vc_ignore () {
   vc_ignore_file="$1"
   pattern="$2"
   case $vc_ignore_file in
@@ -382,7 +377,7 @@ fi
 # version formats or redundant trailing .0 in bootstrap.conf.
 # If we did want full compatibility then we should probably
 # use m4_version_compare from autoconf.
-sort_ver() { # sort -V is not generally available
+sort_ver () { # sort -V is not generally available
   ver1="$1"
   ver2="$2"
 
@@ -416,7 +411,7 @@ sort_ver() { # sort -V is not generally available
   done
 }
 
-get_version() {
+get_version () {
   app=$1
 
   $app --version >/dev/null 2>&1 || { $app --version; return 1; }
@@ -440,7 +435,7 @@ get_version() {
           q'
 }
 
-check_versions() {
+check_versions () {
   ret=0
 
   while read app req_ver; do
@@ -503,7 +498,7 @@ check_versions() {
   return $ret
 }
 
-print_versions() {
+print_versions () {
   echo "Program    Min_version"
   echo "----------------------"
   printf %s "$buildreq"
@@ -585,8 +580,7 @@ if $use_git && test -d .git && check_exists git; then
   fi
 fi
 
-
-cleanup_gnulib() {
+cleanup_gnulib () {
   status=$?
   rm -fr "$gnulib_path"
   exit $status
@@ -677,7 +671,7 @@ gnulib_tool=$GNULIB_SRCDIR/gnulib-tool
 
 # Get translations.
 
-download_po_files() {
+download_po_files () {
   subdir=$1
   domain=$2
   echo "$me: getting translations into $subdir for $domain..."
@@ -692,7 +686,7 @@ download_po_files() {
 # or modified ones into $po_dir.  Also update $po_dir/LINGUAS.
 # Note po files that exist locally only are left in $po_dir but will
 # not be included in LINGUAS and hence will not be distributed.
-update_po_files() {
+update_po_files () {
   # Directory containing primary .po files.
   # Overwrite them only when we're sure a .po file is new.
   po_dir=$1
@@ -734,8 +728,7 @@ case $SKIP_PO in
   fi;;
 esac
 
-symlink_to_dir()
-{
+symlink_to_dir () {
   src=$1/$2
   dst=${3-$2}
 
@@ -803,7 +796,7 @@ symlink_to_dir()
   }
 }
 
-version_controlled_file() {
+version_controlled_file () {
   parent=$1
   file=$2
   if test -d .git; then
