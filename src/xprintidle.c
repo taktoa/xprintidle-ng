@@ -41,6 +41,7 @@
 #include "progname.h"
 #include "xalloc.h"
 
+#define AUTHORS             "Magnus Henoch"
 #define PROJECT_URL         "https://github.com/taktoa/xprintidle-ng"
 #define TRANSLATION_URL     "https://github.com/taktoa/xprintidle-ng/issues"
 #define BUG_URL             "https://github.com/taktoa/xprintidle-ng/issues"
@@ -55,7 +56,7 @@ static void print_idle_time();
 static void signal_callback_handler(int sig, siginfo_t *siginfo, void *context);
 static void mbprint(const char* msg);
 static void print_help(FILE *out);
-static void print_version(void);
+static void print_version(FILE *out);
 const char* time_format;
 Display *dpy;
 
@@ -179,11 +180,6 @@ static void print_idle_time() {
     // Enable line buffering on stdout
     setlinebuf(stdout);
 
-    // Debug code
-    mbprint("Testing: ");
-    mbprint(time_format);
-    mbprint("\n");
-
     // Main loop
     while(1) {
         check_xss_supported(event_basep, error_basep);
@@ -191,11 +187,6 @@ static void print_idle_time() {
         printf("%lu\t%lu\n", time(NULL), workaroundX11(dpy, ssi.idle));
         sleep(1);
     }
-
-    // Debug code
-    mbprint("Testing: ");
-    mbprint(time_format);
-    mbprint("\n");
 }
 
 // Print a string in multibyte format

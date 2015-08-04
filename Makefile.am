@@ -91,5 +91,10 @@ po-check:
 	  rm -f $@-1 $@-2;													\
 	fi
 
-include $(top_srcdir)/lib/local.mk
-include $(top_srcdir)/doc/local.mk
+include lib/gnulib.mk
+dist-hook: $(noinst_LIBRARIES)
+.PHONY: dist-hook
+
+info_TEXINFOS = doc/xprintidle.texi
+doc_xprintidle_TEXINFOS = \
+	doc/fdl.texi
