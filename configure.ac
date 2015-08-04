@@ -1,25 +1,68 @@
-# -*- Autoconf -*-
-# Process this file with autoconf to produce a configure script.
+dnl Process this file with autoconf to produce a configure script.
 
-# Requires Autoconf 2.62 or above
-AC_PREREQ(2.62)
+dnl Copyright (C) 2015 Remy Goldschmidt <taktoa@gmail.com>
 
-# Initialization
-AC_INIT([xprintidle], [0.2], [henoch@dtek.chalmers.se])
-AM_INIT_AUTOMAKE([dist-bzip2 -Wall foreign])
+dnl This file is free software; as a special exception the author gives
+dnl unlimited permission to copy and/or distribute it, with or without
+dnl modifications, as long as this notice is preserved.
+dnl
+dnl This program is distributed in the hope that it will be useful, but
+dnl WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
+dnl implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-# Set src dir
-AC_CONFIG_SRCDIR([xprintidle.c])
+AC_INIT([xprintidle],
+        [0.3],
+        [henoch@dtek.chalmers.se], [],
+        [https://github.com/taktoa/xprintidle-ng])
 
-# Checks for programs.
+dnl Must come before AM_INIT_AUTOMAKE.
+AC_CONFIG_AUX_DIR([build-aux])
+AM_INIT_AUTOMAKE([
+    foreign
+	subdir-objects
+    dist-bzip2
+])
+
+dnl Minimum Autoconf version required.
+AC_PREREQ([2.62])
+
+dnl Where to generate output; srcdir location.
+AC_CONFIG_HEADERS([config.h:config.in])
+AC_CONFIG_SRCDIR([src/xprintidle.c])
+
+dnl Checks for programs.
+dnl We need a C compiler.
 AC_PROG_CC
-AC_PROG_INSTALL
 
-# Check for libraries
+dnl Since we use gnulib: gl_EARLY must be called as soon as possible after
+dnl the C compiler is checked.  The others could be later, but we just
+dnl keep everything together.
+gl_EARLY
+gl_INIT
+
+dnl Copyright will apply as long as these sources are in use, e.g., are
+dnl being compiled, which is reasonable year to claim the copyright.
+AC_DEFINE([COPYRIGHT_YEAR], [m4_esyscmd([date +%Y])])
+
+dnl GNU help2man creates man pages from --help output; in many cases, this
+dnl is sufficient, and obviates the need to maintain man pages separately.
+dnl However, this means invoking executables, which we generally cannot do
+dnl when cross-compiling, so we test to avoid that (the variable
+dnl "cross_compiling" is set by AC_PROG_CC).
+AS_IF([test $cross_compiling = no], [
+  AM_MISSING_PROG([HELP2MAN], [help2man])
+], [
+  HELP2MAN=:
+])
+
+dnl Required libraries
 PKG_CHECK_MODULES([X11],  [x11])
 PKG_CHECK_MODULES([XEXT], [xext])
 PKG_CHECK_MODULES([XSS],  [xscrnsaver])
 
-# Output
-AC_CONFIG_FILES([Makefile])
+dnl i18n support from GNU gettext.
+AM_GNU_GETTEXT_VERSION([0.18.1])
+AM_GNU_GETTEXT([external])
+
+AC_CONFIG_FILES([Makefile po/Makefile.in])
 AC_OUTPUT
