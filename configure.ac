@@ -11,19 +11,23 @@ AC_PROG_CC
 AC_PROG_INSTALL
 
 # Checks for header files.
-AC_PATH_X
-if test "$no_x" = yes; then
-  AC_MSG_ERROR([X not found])
-fi
-AC_SUBST([x_includes])
-AC_SUBST([x_libraries])
+#AC_PATH_X
+#if test "$no_x" = yes; then
+#  AC_MSG_ERROR([X not found])
+#fi
+#AC_SUBST([x_includes])
+#AC_SUBST([x_libraries])
 
 # Checks for libraries.
-user_LIBS=$LIBS
-LIBS="$LIBS -L$x_libraries"
-AC_CHECK_LIB([X11], [XOpenDisplay], , [AC_MSG_ERROR([libX11 not found])])
-AC_CHECK_LIB([Xss], [XScreenSaverQueryExtension], , [AC_MSG_ERROR([libXss not found])])
-LIBS=$user_LIBS
+#user_LIBS=$LIBS
+#LIBS="$LIBS -L$x_libraries"
+#AC_CHECK_LIB([X11], [XOpenDisplay], , [AC_MSG_ERROR([libX11 not found])])
+#AC_CHECK_LIB([Xss], [XScreenSaverQueryExtension], , [AC_MSG_ERROR([libXss not found])])
+#LIBS=$user_LIBS
+
+PKG_CHECK_MODULES([X11], [x11])
+PKG_CHECK_MODULES([XEXT], [xext])
+PKG_CHECK_MODULES([XSS], [xscrnsaver])
 
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT
