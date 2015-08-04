@@ -1,0 +1,6 @@
+Initial version: Magnus Henoch
+
+Contributors:
+* Danny Kukawka
+* Eivind Magnus Hvidevold
+* Remy Goldschmidt
