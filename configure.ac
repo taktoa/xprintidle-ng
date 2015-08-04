@@ -42,7 +42,9 @@ gl_INIT
 
 dnl Copyright will apply as long as these sources are in use, e.g., are
 dnl being compiled, which is reasonable year to claim the copyright.
-AC_DEFINE([COPYRIGHT_YEAR], [m4_esyscmd([date +%Y])])
+AC_DEFINE([COPYRIGHT_YEAR],
+          [m4_esyscmd([date +%Y])],
+          [Year of copyright])
 
 dnl GNU help2man creates man pages from --help output; in many cases, this
 dnl is sufficient, and obviates the need to maintain man pages separately.

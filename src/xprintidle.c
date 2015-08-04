@@ -31,10 +31,7 @@
 #include <X11/Xlib.h>
 #include <X11/extensions/dpms.h>
 #include <X11/extensions/scrnsaver.h>
-#include <stdio.h>
 #include <stdbool.h>
-#include <unistd.h>
-#include <string.h>
 #include <signal.h>
 #include <time.h>
 #include <config.h>

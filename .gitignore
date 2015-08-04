@@ -4,6 +4,8 @@
 *.cache
 .dirstamp
 
+/build-aux
+/gnulib
 /.sc-start-sc*
 /aclocal.m4
 /ChangeLog
@@ -18,21 +20,21 @@
 /doc/*.log
 /doc/*.pdf
 /doc/*.toc
-/doc/hello.??
-/doc/hello.??s
+/doc/xprintidle.??
+/doc/xprintidle.??s
 /doc/stamp-vti
 /doc/wwwtemp
 /GNUmakefile
-/hello
-/hello-*.tar.*
-/hello.1
+/xprintidle
+/xprintidle-*.tar.*
+/xprintidle.1
 /INSTALL
 /lib
 /m4
 /maint.mk
 /Makefile
 /Makefile.in
-/man/hello.1
+/doc/xprintidle.1
 /po-check-1
 /po-check-2
 /po/*.gmo
