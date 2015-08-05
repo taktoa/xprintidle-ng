@@ -32,7 +32,7 @@ AC_CONFIG_SRCDIR([src/xprintidle-ng.c])
 
 dnl Checks for programs.
 dnl We need a C compiler.
-AC_PROG_CC
+AC_PROG_CC_C99
 
 dnl Since we use gnulib: gl_EARLY must be called as soon as possible after
 dnl the C compiler is checked.  The others could be later, but we just

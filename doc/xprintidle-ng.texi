@@ -83,20 +83,62 @@ Eivind Magnus Hvidevold, and Remy Goldschmidt.
 @cindex examples
 
 Here are some examples of running xprintidle-ng.
-All examples are shown after 5.256 seconds idle.
+All examples are shown after 5.056 seconds idle
+at a Unix time of 1010001000.
 
 This is the output of @samp{xprintidle-ng}:
 
 @example
-5256
+5056
 @end example
 
-This is the output of @samp{xprintidle-ng --format '%s'}:
+This is the output of @samp{xprintidle-ng --format '%tms'}:
 
 @example
-5.256
+5056
 @end example
 
+This is the output of @samp{xprintidle-ng --format '%tsci'}:
+
+@example
+5
+@end example
+
+This is the output of @samp{xprintidle-ng --format '%tscf'}:
+
+@example
+5.056
+@end example
+
+This is the output of @samp{xprintidle-ng --format '%rms'}:
+
+@example
+056
+@end example
+
+This is the output of @samp{xprintidle-ng --format '%rsc'}:
+
+@example
+05
+@end example
+
+This is the output of @samp{xprintidle-ng --format '%rhr:%rmn:%rsc.%rms'}:
+
+@example
+00:00:05.056
+@end example
+
+This is the output of @samp{xprintidle-ng --format '%stms'}:
+
+@example
+1010000994944
+@end example
+
+This is the output of @samp{xprintidle-ng --format '%stsc'}:
+
+@example
+1010000994
+@end example
 
 @node Invoking xprintidle-ng
 @chapter Invoking @command{xprintidle-ng}
@@ -109,7 +151,7 @@ This is the output of @samp{xprintidle-ng --format '%s'}:
 The format for running the @command{xprintidle-ng} program is:
 
 @example
-hello @var{option} @dots{}
+xprintidle-ng @var{option} @dots{}
 @end example
 
 With no options, @command{xprintidle-ng} prints the number of
@@ -123,6 +165,62 @@ milliseconds that the X server has been idle
 @opindex --format
 @opindex -f
 Use the time format string @var{fmt} instead of @code{"%m"}
+
+The specification for format strings is as follows:
+
+@table @samp
+@item @code{"%tms"}
+Outputs the total idle time in milliseconds. This is the default.
+
+@item @code{"%tsci"}
+Outputs the total idle time in seconds, rounded down.
+
+@item @code{"%tscf"}
+Same as @code{"%tsci"}, except it outputs a floating-point number.
+
+@item @code{"%tmni"}
+Outputs the total idle time in minutes, rounded down.
+
+@item @code{"%tmnf"}
+Same as @code{"%tmni"}, except it outputs a floating-point number.
+
+@item @code{"%thri"}
+Outputs the total idle time in hours, rounded down.
+
+@item @code{"%thrf"}
+Same as @code{"%thri"}, except it outputs a floating-point number.
+
+@item @code{"%tdyi"}
+Outputs the total idle time in days, rounded down.
+
+@item @code{"%tdyf"}
+Same as @code{"%tdyi"}, except it outputs a floating-point number.
+
+@item @code{"%stms"}
+Outputs the number of milliseconds since the Unix epoch when the
+X server was last active.
+
+@item @code{"stsc"}
+Outputs the number of seconds since the Unix epoch when the X server
+was last active.
+
+@item @code{"rms"}
+Outputs the remainder of milliseconds in the current elapsed idle
+time, zero-padded to a width of three characters.
+
+@item @code{"rsc"}
+Outputs the remainder of seconds in the current elapsed idle time,
+zero-padded to a width of two characters.
+
+@item @code{"rmn"}
+Outputs the remainder of minutes in the current elapsed idle time,
+zero-padded to a width of two characters.
+
+@item @code{"rhr"}
+Outputs the remainder of hours in the current elapsed idle time,
+zero-padded to a width of two characters.
+@end table
+
 
 @item --help
 @itemx -h

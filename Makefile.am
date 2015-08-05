@@ -1,6 +1,6 @@
 # Process this file with automake to produce Makefile.in (in this,
 # and all subdirectories).
-# Makefile for the top-level directory of GNU hello.
+# Makefile for the top-level directory of xprintidle-ng.
 #
 # Copyright 1997, 1998, 2005, 2006, 2007, 2008, 2009, 2010, 2011, 2013,
 # 2014, 2015 Free Software Foundation, Inc.
@@ -31,9 +31,13 @@ SUBDIRS = po
 
 bin_PROGRAMS = xprintidle-ng
 
-xprintidle_ng_SOURCES = src/xprintidle-ng.c src/system.h
+xprintidle_ng_SOURCES =  src/xprintidle-ng.c
+xprintidle_ng_SOURCES += src/system.h
+xprintidle_ng_SOURCES += src/time-format.c
+xprintidle_ng_SOURCES += src/time-format.h
 
 xprintidle_ng_CFLAGS = \
+    -g -O0             \
 	$(XEXT_CFLAGS)     \
 	$(XSS_CFLAGS)      \
 	$(X11_CFLAGS)
