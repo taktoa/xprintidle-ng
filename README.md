@@ -79,9 +79,9 @@ Languages translated so far:
 [gitter]:          https://gitter.im/taktoa/xprintidle-ng
 [travis]:          https://travis-ci.org/taktoa/xprintidle-ng
 
-[badge-gitter]:    https://img.shields.io/badge/Gitter-Join%20Chat%20%E2%86%92-brightgreen.svg?style=flat
-[badge-travis]:    https://img.shields.io/travis/taktoa/xprintidle-ng.svg?style=flat
-[badge-gh-issues]: https://img.shields.io/github/issues/taktoa/xprintidle-ng.svg?style=flat
-[badge-gh-forks]:  https://img.shields.io/github/forks/taktoa/xprintidle-ng.svg?style=flat
-[badge-gh-stars]:  https://img.shields.io/github/stars/taktoa/xprintidle-ng.svg?style=flat
-[badge-license]:   https://img.shields.io/badge/license-GPL-blue.svg?style=flat
+[badge-gitter]:    https://img.shields.io/badge/gitter-%E2%86%92-blue.svg
+[badge-travis]:    https://img.shields.io/travis/taktoa/xprintidle-ng.svg
+[badge-gh-issues]: https://img.shields.io/github/issues/taktoa/xprintidle-ng.svg
+[badge-gh-forks]:  https://img.shields.io/github/forks/taktoa/xprintidle-ng.svg
+[badge-gh-stars]:  https://img.shields.io/github/stars/taktoa/xprintidle-ng.svg
+[badge-license]:   https://img.shields.io/badge/license-GPL-blue.svg
