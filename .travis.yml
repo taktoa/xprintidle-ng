@@ -24,4 +24,4 @@ script:
   - ./bootstrap
   - ./configure
   - make
-  - make test
+  - make check
