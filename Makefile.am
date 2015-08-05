@@ -24,21 +24,21 @@ ACLOCAL_AMFLAGS = -I m4
 AM_CPPFLAGS = -Ilib -I$(top_srcdir)/lib -Isrc -I$(top_srcdir)/src
 
 # Additional files to distribute.
-EXTRA_DIST = doc/xprintidle.x
+EXTRA_DIST = doc/xprintidle-ng.x
 
 # Subdirectories to descend into.
 SUBDIRS = po
 
-bin_PROGRAMS = xprintidle
+bin_PROGRAMS = xprintidle-ng
 
-xprintidle_SOURCES = src/xprintidle.c src/system.h
+xprintidle-ng_SOURCES = src/xprintidle-ng.c src/system.h
 
-xprintidle_CFLAGS = \
-	$(XEXT_CFLAGS)  \
-	$(XSS_CFLAGS)   \
+xprintidle-ng_CFLAGS = \
+	$(XEXT_CFLAGS)     \
+	$(XSS_CFLAGS)      \
 	$(X11_CFLAGS)
 
-xprintidle_LDADD =                      \
+xprintidle-ng_LDADD =                   \
 	$(LIBINTL)                          \
 	$(top_builddir)/lib/lib$(PACKAGE).a \
 	$(XEXT_LIBS)                        \
@@ -50,9 +50,9 @@ DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
 
 CLEANFILES =
 
-xprintidle.1: xprintidle
-	$(HELP2MAN) --include=$(top_srcdir)/doc/xprintidle.x \
-	            $(top_builddir)/xprintidle -o $@-t
+xprintidle-ng.1: xprintidle-ng
+	$(HELP2MAN) --include=$(top_srcdir)/doc/xprintidle-ng.x \
+	            $(top_builddir)/xprintidle-ng -o $@-t
 	chmod a=r $@-t
 	mv -f $@-t $@
 
@@ -95,5 +95,5 @@ include lib/gnulib.mk
 dist-hook: $(noinst_LIBRARIES)
 .PHONY: dist-hook
 
-info_TEXINFOS = doc/xprintidle.texi
-doc_xprintidle_TEXINFOS = doc/fdl.texi
+info_TEXINFOS = doc/xprintidle-ng.texi
+doc_xprintidle-ng_TEXINFOS = doc/fdl.texi

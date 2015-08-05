@@ -16,8 +16,8 @@
 //   You should have received a copy of the GNU General Public License
 //   along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-#ifndef XPRINTIDLE_SYSTEM_H
-#define XPRINTIDLE_SYSTEM_H
+#ifndef XPRINTIDLE_NG_SYSTEM_H
+#define XPRINTIDLE_NG_SYSTEM_H
 
 // Assume ANSI C89 headers are available.
 #include <limits.h>
@@ -47,4 +47,4 @@
 #define STRNCMP_LIT(s, literal) \
   strncmp (s, "" literal "", sizeof (literal) - 1)
 
-#endif /* XPRINTIDLE_SYSTEM_H */
+#endif /* XPRINTIDLE_NG_SYSTEM_H */

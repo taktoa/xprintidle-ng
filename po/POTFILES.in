@@ -7,7 +7,7 @@
 # List of source files containing translatable strings.
 
 # Package source files.
-src/xprintidle.c
+src/xprintidle-ng.c
 
 # Gnulib source files.
 lib/error.c

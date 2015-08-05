@@ -227,7 +227,7 @@ static void print_help(FILE *out) {
        no-wrap */
     fprintf(out, _("Report bugs to: %s\n"),            BUG_URL);
     fprintf(out, _("Report translation bugs to %s\n"), TRANSLATION_URL);
-    fprintf(out, _("xprintidle home page: %s\n"),      PROJECT_URL);
+    fprintf(out, _("xprintidle-ng home page: %s\n"),   PROJECT_URL);
     exit(out == stderr ? EXIT_FAILURE : EXIT_SUCCESS);
 }
 

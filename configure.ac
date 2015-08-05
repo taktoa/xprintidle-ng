@@ -10,7 +10,7 @@ dnl This program is distributed in the hope that it will be useful, but
 dnl WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 dnl implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-AC_INIT([xprintidle],
+AC_INIT([xprintidle-ng],
         [0.3],
         [henoch@dtek.chalmers.se], [],
         [https://github.com/taktoa/xprintidle-ng])
@@ -28,7 +28,7 @@ AC_PREREQ([2.62])
 
 dnl Where to generate output; srcdir location.
 AC_CONFIG_HEADERS([config.h:config.in])
-AC_CONFIG_SRCDIR([src/xprintidle.c])
+AC_CONFIG_SRCDIR([src/xprintidle-ng.c])
 
 dnl Checks for programs.
 dnl We need a C compiler.

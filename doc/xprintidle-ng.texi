@@ -1,13 +1,13 @@
 \input texinfo @c -*-texinfo-*-
-@setfilename xprintidle.info
+@setfilename xprintidle-ng.info
 @include version.texi
-@settitle xprintidle @value{VERSION}
+@settitle xprintidle-ng @value{VERSION}
 
 @defcodeindex op
 @syncodeindex op cp
 
 @copying
-This manual is for xprintidle (version @value{VERSION}, @value{UPDATED}),
+This manual is for xprintidle-ng (version @value{VERSION}, @value{UPDATED}),
 which prints the current X11 idle time.
 
 Copyright @copyright{} 2015 Remy Goldschmidt.
@@ -24,11 +24,11 @@ Texts.  A copy of the license is included in the section entitled
 
 @dircategory Basics
 @direntry
-* xprintidle: (xprintidle). Print the current idle time.
+* xprintidle-ng: (xprintidle-ng). Print the current idle time.
 @end direntry
 
 @titlepage
-@title xprintidle
+@title xprintidle-ng
 @subtitle for version @value{VERSION}, @value{UPDATED}
 @author Remy Goldschmidt (@email{taktoa@@gmail.com})
 @page
@@ -41,16 +41,16 @@ Texts.  A copy of the license is included in the section entitled
 
 @ifnottex
 @node Top
-@top xprintidle
+@top xprintidle-ng
 
-This manual is for xprintidle (version @value{VERSION}, @value{UPDATED}),
+This manual is for xprintidle-ng (version @value{VERSION}, @value{UPDATED}),
 which prints the current X11 idle time.
 @end ifnottex
 
 @menu
 * Overview::                       General purpose and information.
-* Sample output::                  Sample output from @command{xprintidle}.
-* Invoking xprintidle::                How to run @command{xprintidle}.
+* Sample output::                  Sample output from @command{xprintidle-ng}.
+* Invoking xprintidle-ng::         How to run @command{xprintidle-ng}.
 * GNU Free Documentation License:: Copying and sharing this documentation.
 * Concept index::                  Index of concepts.
 @end menu
@@ -62,7 +62,7 @@ which prints the current X11 idle time.
 @cindex greetings
 @cindex overview
 
-The @command{xprintidle} program (@url{PROJECT_URL, website})
+The @command{xprintidle-ng} program (@url{PROJECT_URL, website})
 queries the X11 server for its current idle time, and prints this time
 in milliseconds by default. The time can be formatted through a format
 string similar to the @command{date} command.
@@ -72,7 +72,7 @@ string similar to the @command{date} command.
 @cindex Kukawka, Danny
 @cindex Hvidevold, Eivind Magnus
 @cindex Goldschmidt, Remy
-xprintidle was written by Magnus Henoch, Danny Kukawka,
+xprintidle-ng was written by Magnus Henoch, Danny Kukawka,
 Eivind Magnus Hvidevold, and Remy Goldschmidt.
 
 
@@ -82,40 +82,40 @@ Eivind Magnus Hvidevold, and Remy Goldschmidt.
 @cindex sample output
 @cindex examples
 
-Here are some examples of running xprintidle.
+Here are some examples of running xprintidle-ng.
 All examples are shown after 5.256 seconds idle.
 
-This is the output of @samp{xprintidle}:
+This is the output of @samp{xprintidle-ng}:
 
 @example
 5256
 @end example
 
-This is the output of @samp{xprintidle --format '%s'}:
+This is the output of @samp{xprintidle-ng --format '%s'}:
 
 @example
 5.256
 @end example
 
 
-@node Invoking xprintidle
-@chapter Invoking @command{xprintidle}
+@node Invoking xprintidle-ng
+@chapter Invoking @command{xprintidle-ng}
 
 @cindex invoking
 @cindex options
 @cindex usage
 @cindex help
 
-The format for running the @command{xprintidle} program is:
+The format for running the @command{xprintidle-ng} program is:
 
 @example
 hello @var{option} @dots{}
 @end example
 
-With no options, @command{xprintidle} prints the number of
+With no options, @command{xprintidle-ng} prints the number of
 milliseconds that the X server has been idle
 
-@command{xprintidle} supports the following options:
+@command{xprintidle-ng} supports the following options:
 
 @table @option
 @item --format=@var{fmt}
@@ -135,7 +135,7 @@ successfully.
 @itemx -v
 @opindex --version
 @opindex -v
-Print the version number and licensing information of xprintidle on
+Print the version number and licensing information of xprintidle-ng on
 standard output and then exit successfully.
 
 @end table
