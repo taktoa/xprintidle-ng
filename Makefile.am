@@ -97,6 +97,27 @@ po-check:
 	  rm -f $@-1 $@-2;                                                  \
 	fi
 
+clean-all:
+	make distclean
+	-echo "Removing configure files"
+	-rm -rf config.in config.in~ configure
+	-echo "Removing Makefiles"
+	-rm -rf GNUmakefile Makefile.in maint.mk
+	-echo "Removing generated documentation"
+	-rm -rf INSTALL README-release ABOUT-NLS ChangeLog
+	-rm -rf doc/fdl.txi doc/gendocs*
+	-echo "Removing generated internationalization files"
+	-rm -rf po/*.sed po/Make* po/*.sin po/stamp-po po/*.pot po/Rules-quot
+	-rm -rf po/en@boldquot.header po/en@quot.header
+	-echo "Removing distribution tarballs"
+	-rm -rf *.tar.bz2 *.tar.gz
+	-echo "Removing macros"
+	-rm -rf aclocal.m4 autom4te.cache m4
+	-echo "Removing libraries"
+	-rm -rf gnulib lib
+	-echo "Removing extraneous folders"
+	-rm -rf temp build build-aux
+
 include lib/gnulib.mk
 dist-hook: $(noinst_LIBRARIES)
 .PHONY: dist-hook
