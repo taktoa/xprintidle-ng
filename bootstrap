@@ -1,6 +1,6 @@
 #! /bin/sh
 # Print a version string.
-scriptversion=2015-08-04.22; # UTC
+scriptversion=2015-08-05.00; # UTC
 
 # Bootstrap this package from checked-out sources.
 
@@ -56,14 +56,7 @@ Options:
                           have gnulib sources on your machine, and
                           do not want to waste your bandwidth downloading
                           them again.  Defaults to \$GNULIB_SRCDIR
- --bootstrap-sync         if this bootstrap script is not identical to
-                          the version in the local gnulib sources,
-                          update this script, and then restart it with
-                          /bin/sh or the shell \$CONFIG_SHELL
- --no-bootstrap-sync      do not check whether bootstrap is out of sync
  --copy                   copy files instead of creating symbolic links
- --force                  attempt to bootstrap even if the sources seem
-                          not to have been checked out
  --no-git                 do not use git to update gnulib.  Requires that
                           --gnulib-srcdir point to a correct gnulib snapshot
  --skip-po                do not download po files
@@ -185,10 +178,6 @@ MSGID_BUGS_ADDRESS="taktoa@gmail.com"
 # Files we don't want to import.
 excluded_files=
 
-# File that should exist in the top directory of a checked out hierarchy,
-# but not in a distribution tarball.
-checkout_only_file=README-hacking
-
 # Whether to use copies instead of symlinks.
 copy=false
 
@@ -197,10 +186,6 @@ copy=false
 # Or set it to 'auto' to make this script select which to use based
 # on which version control system (if any) is used in the source directory.
 vc_ignore=auto
-
-# Set this to true in bootstrap.conf to enable --bootstrap-sync by
-# default.
-bootstrap_sync=false
 
 # Use git to update gnulib sources
 use_git=true
@@ -289,14 +274,8 @@ do
     GNULIB_SRCDIR=${option#--gnulib-srcdir=};;
   --skip-po)
     SKIP_PO=t;;
-  --force)
-    checkout_only_file=;;
   --copy)
     copy=true;;
-  --bootstrap-sync)
-    bootstrap_sync=true;;
-  --no-bootstrap-sync)
-    bootstrap_sync=false;;
   --no-git)
     use_git=false;;
   *)
@@ -306,10 +285,6 @@ done
 
 $use_git || test -d "$GNULIB_SRCDIR" \
   || die "Error: --no-git requires --gnulib-srcdir"
-
-if test -n "$checkout_only_file" && test ! -r "$checkout_only_file"; then
-  die "Bootstrapping from a non-checked-out distribution is risky."
-fi
 
 # Strip blank and comment lines to leave significant entries.
 gitignore_entries () {
@@ -649,23 +624,6 @@ case ${GNULIB_SRCDIR--} in
   ;;
 esac
 
-# $GNULIB_SRCDIR now points to the version of gnulib to use, and
-# we no longer need to use git or $gnulib_path below here.
-
-if $bootstrap_sync; then
-  cmp -s "$0" "$GNULIB_SRCDIR/build-aux/bootstrap" || {
-    echo "$0: updating bootstrap and restarting..."
-    case $(sh -c 'echo "$1"' -- a) in
-      a) ignored=--;;
-      *) ignored=ignored;;
-    esac
-    exec sh -c \
-      'cp "$1" "$2" && shift && exec "${CONFIG_SHELL-/bin/sh}" "$@"' \
-      $ignored "$GNULIB_SRCDIR/build-aux/bootstrap" \
-      "$0" "$@" --no-bootstrap-sync
-  }
-fi
-
 gnulib_tool=$GNULIB_SRCDIR/gnulib-tool
 <$gnulib_tool || exit $?
 
@@ -676,9 +634,6 @@ download_po_files () {
   domain=$2
   echo "$me: getting translations into $subdir for $domain..."
   cmd=$(printf "$po_download_command_format" "$domain" "$subdir")
-  eval "$cmd" && return
-  # Fallback to HTTP.
-  cmd=$(printf "$po_download_command_format2" "$subdir" "$domain")
   eval "$cmd"
 }
 
