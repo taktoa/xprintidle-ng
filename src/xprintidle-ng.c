@@ -193,7 +193,7 @@ static unsigned long get_idle_time() {
 }
 
 // Print the current idle time
-static print_idle_time() {
+static void print_idle_time() {
     printf("%lu\n", get_idle_time());
 }
 
