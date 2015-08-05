@@ -12,7 +12,8 @@ dnl implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 AC_INIT([xprintidleng],
         [0.3],
-        [taktoa@gmail.com], [],
+        [taktoa@gmail.com],
+        [xprintidleng],
         [https://taktoa.github.io/xprintidle-ng])
 
 dnl Must come before AM_INIT_AUTOMAKE.
