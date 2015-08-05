@@ -180,13 +180,10 @@ static void print_idle_time() {
     // Enable line buffering on stdout
     setlinebuf(stdout);
 
-    // Main loop
-    while(1) {
-        check_xss_supported(event_basep, error_basep);
-        try_xss_query(ssi);
-        printf("%lu\t%lu\n", time(NULL), workaroundX11(dpy, ssi.idle));
-        sleep(1);
-    }
+    // Get the current idle time
+    check_xss_supported(event_basep, error_basep);
+    try_xss_query(ssi);
+    printf("%lu\n", workaroundX11(dpy, ssi.idle));
 }
 
 // Print a string in multibyte format
