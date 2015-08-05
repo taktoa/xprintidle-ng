@@ -17,6 +17,8 @@ addons:
     - libtool
     - gettext
     - pkg-config
+    - help2man
+    - texinfo
 
 script:
   - ./bootstrap
