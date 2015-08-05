@@ -4,7 +4,12 @@
 
 ### [Web page][website]
 
-[![Gitter][gitter-img]][gitter]
+[![Gitter][badge-gitter]][gitter]
+[![Travis][badge-travis]][travis]
+![Issues][badge-gh-issues]
+![Forks][badge-gh-forks] 
+![Stars][badge-gh-stars] 
+![License][badge-license]
 
 `xprintidle-ng` is a utility that queries the X server for the user's idle time
 and prints it in milliseconds (or with a custom format string).
@@ -70,6 +75,13 @@ Languages translated so far:
 
 
 
-[website]:    https://taktoa.github.io/xprintidle-ng
-[gitter]:     https://gitter.im/taktoa/xprintidle-ng
-[gitter-img]: https://badges.gitter.im/Join%20Chat.svg
+[website]:         https://taktoa.github.io/xprintidle-ng
+[gitter]:          https://gitter.im/taktoa/xprintidle-ng
+[travis]:          https://travis-ci.org/taktoa/xprintidle-ng
+
+[badge-gitter]:    https://img.shields.io/badge/Gitter-Join%20Chat%20%E2%86%92-brightgreen.svg?style=flat
+[badge-travis]:    https://img.shields.io/travis/taktoa/xprintidle-ng.svg?style=flat
+[badge-gh-issues]: https://img.shields.io/github/issues/taktoa/xprintidle-ng.svg?style=flat
+[badge-gh-forks]:  https://img.shields.io/github/forks/taktoa/xprintidle-ng.svg?style=flat
+[badge-gh-stars]:  https://img.shields.io/github/stars/taktoa/xprintidle-ng.svg?style=flat
+[badge-license]:   https://img.shields.io/badge/license-GPL-blue.svg?style=flat
