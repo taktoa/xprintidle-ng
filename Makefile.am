@@ -34,16 +34,16 @@ bin_PROGRAMS = xprintidle
 xprintidle_SOURCES = src/xprintidle.c src/system.h
 
 xprintidle_CFLAGS = \
-	$(XEXT_CFLAGS) \
-	$(XSS_CFLAGS) \
+	$(XEXT_CFLAGS)  \
+	$(XSS_CFLAGS)   \
 	$(X11_CFLAGS)
 
-xprintidle_LDADD = \
-	$(LIBINTL) \
+xprintidle_LDADD =                      \
+	$(LIBINTL)                          \
 	$(top_builddir)/lib/lib$(PACKAGE).a \
-	$(XEXT_LIBS) \
-	$(XSS_LIBS) \
-	$(X11_LIBS) 
+	$(XEXT_LIBS)                        \
+	$(XSS_LIBS)                         \
+	$(X11_LIBS)
 
 localedir = $(datadir)/locale
 DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
@@ -52,7 +52,7 @@ CLEANFILES =
 
 xprintidle.1: xprintidle
 	$(HELP2MAN) --include=$(top_srcdir)/doc/xprintidle.x \
-				$(top_builddir)/xprintidle -o $@-t
+	            $(top_builddir)/xprintidle -o $@-t
 	chmod a=r $@-t
 	mv -f $@-t $@
 
@@ -70,25 +70,25 @@ LOG_COMPILER = $(SHELL)
 # releases, so that translators will be sure to have all the messages.
 # (From coreutils.)
 po-check:
-	if test -f po/POTFILES.in; then										\
-	  grep -E -v '^(#|$$)' po/POTFILES.in								\
-	    | grep -v '^src/false\.c$$' | sort > $@-1;						\
-	  files=;															\
-	  for file in $$($(CVS_LIST_EXCEPT)) `find * -name '*.[ch]'`; do	\
-	    case $$file in													\
-	    gnulib/* | doc/*) continue;;									\
-	    esac;															\
-	    case $$file in													\
-	    *.[ch])															\
-	      base=`expr " $$file" : ' \(.*\)\..'`;							\
-	      { test -f $$base.l || test -f $$base.y; } && continue;;		\
-	    esac;															\
-	    files="$$files $$file";											\
-	  done;																\
-	  grep -E -l '\b(N?_|gettext *)\([^)"]*("|$$)' $$files				\
-	    | sort -u > $@-2;												\
-	  diff -u $@-1 $@-2 || exit 1;										\
-	  rm -f $@-1 $@-2;													\
+	if test -f po/POTFILES.in; then                                     \
+	  grep -E -v '^(#|$$)' po/POTFILES.in                               \
+	    | grep -v '^src/false\.c$$' | sort > $@-1;                      \
+	  files=;                                                           \
+	  for file in $$($(CVS_LIST_EXCEPT)) `find * -name '*.[ch]'`; do    \
+	    case $$file in                                                  \
+	    gnulib/* | doc/*) continue;;                                    \
+	    esac;                                                           \
+	    case $$file in                                                  \
+	    *.[ch])                                                         \
+	      base=`expr " $$file" : ' \(.*\)\..'`;                         \
+	      { test -f $$base.l || test -f $$base.y; } && continue;;       \
+	    esac;                                                           \
+	    files="$$files $$file";                                         \
+	  done;                                                             \
+	  grep -E -l '\b(N?_|gettext *)\([^)"]*("|$$)' $$files              \
+	    | sort -u > $@-2;                                               \
+	  diff -u $@-1 $@-2 || exit 1;                                      \
+	  rm -f $@-1 $@-2;                                                  \
 	fi
 
 include lib/gnulib.mk
@@ -96,5 +96,4 @@ dist-hook: $(noinst_LIBRARIES)
 .PHONY: dist-hook
 
 info_TEXINFOS = doc/xprintidle.texi
-doc_xprintidle_TEXINFOS = \
-	doc/fdl.texi
+doc_xprintidle_TEXINFOS = doc/fdl.texi
