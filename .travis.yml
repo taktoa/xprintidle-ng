@@ -1,15 +1,21 @@
+sudo: false
+
 language: c
 
 compiler:
-  - clang
   - gcc
+  - clang
 
-before_install:
-  - sudo apt-get update -qq
-  - sudo apt-get install -qq libxss-dev
-  - sudo apt-get install -qq build-essential
-  - sudo apt-get install -qq automake autoconf libtool gettext
-  - sudo apt-get install -qq pkg-config
+addons:
+  apt:
+    packages:
+    - libxss-dev
+    - build-essential
+    - automake
+    - autoconf
+    - libtool
+    - gettext
+    - pkg-config
 
 script:
   - ./bootstrap
