@@ -31,14 +31,14 @@ SUBDIRS = po
 
 bin_PROGRAMS = xprintidle-ng
 
-xprintidle-ng_SOURCES = src/xprintidle-ng.c src/system.h
+xprintidle_ng_SOURCES = src/xprintidle-ng.c src/system.h
 
-xprintidle-ng_CFLAGS = \
+xprintidle_ng_CFLAGS = \
 	$(XEXT_CFLAGS)     \
 	$(XSS_CFLAGS)      \
 	$(X11_CFLAGS)
 
-xprintidle-ng_LDADD =                   \
+xprintidle_ng_LDADD =                   \
 	$(LIBINTL)                          \
 	$(top_builddir)/lib/lib$(PACKAGE).a \
 	$(XEXT_LIBS)                        \
@@ -56,7 +56,7 @@ xprintidle-ng.1: xprintidle-ng
 	chmod a=r $@-t
 	mv -f $@-t $@
 
-CLEANFILES += $(man_MANS)
+CLEANFILES += $(doc_MANS)
 
 noinst_LIBRARIES =
 MOSTLYCLEANFILES =
@@ -96,4 +96,4 @@ dist-hook: $(noinst_LIBRARIES)
 .PHONY: dist-hook
 
 info_TEXINFOS = doc/xprintidle-ng.texi
-doc_xprintidle-ng_TEXINFOS = doc/fdl.texi
+doc_xprintidle_ng_TEXINFOS = doc/fdl.texi

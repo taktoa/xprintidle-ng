@@ -12,8 +12,8 @@ dnl implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 AC_INIT([xprintidle-ng],
         [0.3],
-        [henoch@dtek.chalmers.se], [],
-        [https://github.com/taktoa/xprintidle-ng])
+        [taktoa@gmail.com], [],
+        [https://taktoa.github.io/xprintidle-ng])
 
 dnl Must come before AM_INIT_AUTOMAKE.
 AC_CONFIG_AUX_DIR([build-aux])
