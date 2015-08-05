@@ -1,6 +1,6 @@
 #! /bin/sh
 # Print a version string.
-scriptversion=2015-08-05.00; # UTC
+scriptversion=2015-08-05.01; # UTC
 
 # Bootstrap this package from checked-out sources.
 
@@ -59,7 +59,6 @@ Options:
  --copy                   copy files instead of creating symbolic links
  --no-git                 do not use git to update gnulib.  Requires that
                           --gnulib-srcdir point to a correct gnulib snapshot
- --skip-po                do not download po files
 
 If the file $me.conf exists in the same directory as this script, its
 contents are read as shell variables to configure the bootstrap.
@@ -72,8 +71,7 @@ EOF
 }
 
 # warnf_ FORMAT-STRING ARG1...
-warnf_ ()
-{
+warnf_ () {
   warnf_format_=$1
   shift
   nl='
@@ -86,8 +84,7 @@ warnf_ ()
 }
 
 # warn_ WORD1...
-warn_ ()
-{
+warn_ () {
   # If IFS does not start with ' ', set it and emit the warning in a subshell.
   case $IFS in
     ' '*) warnf_ '%s\n' "$*";;
@@ -119,15 +116,6 @@ bootstrap_post_import_hook () { :; }
 # A function to be called after everything else in this script.
 # Override it via your own definition in bootstrap.conf.
 bootstrap_epilogue () { :; }
-
-# The command to download all .po files for a specified domain into
-# a specified directory.  Fill in the first %s is the domain name, and
-# the second with the destination directory.  Use rsync's -L and -r
-# options because the latest/%s directory and the .po files within are
-# all symlinks.
-po_download_command_format=\
-"wget --mirror -nd -q -np -A.po -P '%s' \
- http://translationproject.org/latest/%s/"
 
 # Prefer a non-empty tarname (4th argument of AC_INIT if given), else
 # fall back to the package name (1st argument with munging)
@@ -210,10 +198,7 @@ check_exists () {
 # Search for a required program.  Use the value of ENVVAR, if set,
 # otherwise find the first of the NAMES that can be run.
 # If found, set ENVVAR to the program name, die otherwise.
-#
-# FIXME: code duplication, see also gnu-web-doc-update.
-find_tool ()
-{
+find_tool () {
   find_tool_envvar=$1
   shift
   find_tool_names=$@
@@ -626,62 +611,6 @@ esac
 
 gnulib_tool=$GNULIB_SRCDIR/gnulib-tool
 <$gnulib_tool || exit $?
-
-# Get translations.
-
-download_po_files () {
-  subdir=$1
-  domain=$2
-  echo "$me: getting translations into $subdir for $domain..."
-  cmd=$(printf "$po_download_command_format" "$domain" "$subdir")
-  eval "$cmd"
-}
-
-# Mirror .po files to $po_dir/.reference and copy only the new
-# or modified ones into $po_dir.  Also update $po_dir/LINGUAS.
-# Note po files that exist locally only are left in $po_dir but will
-# not be included in LINGUAS and hence will not be distributed.
-update_po_files () {
-  # Directory containing primary .po files.
-  # Overwrite them only when we're sure a .po file is new.
-  po_dir=$1
-  domain=$2
-
-  # Mirror *.po files into this dir.
-  # Usually contains *.s1 checksum files.
-  ref_po_dir="$po_dir/.reference"
-
-  test -d $ref_po_dir || mkdir $ref_po_dir || return
-  download_po_files $ref_po_dir $domain \
-    && ls "$ref_po_dir"/*.po 2>/dev/null |
-      sed 's|.*/||; s|\.po$||' > "$po_dir/LINGUAS" || return
-
-  langs=$(cd $ref_po_dir && echo *.po | sed 's/\.po//g')
-  test "$langs" = '*' && langs=x
-  for po in $langs; do
-    case $po in x) continue;; esac
-    new_po="$ref_po_dir/$po.po"
-    cksum_file="$ref_po_dir/$po.s1"
-    if ! test -f "$cksum_file" ||
-        ! test -f "$po_dir/$po.po" ||
-        ! $SHA1SUM -c "$cksum_file" < "$new_po" > /dev/null 2>&1; then
-      echo "$me: updated $po_dir/$po.po..."
-      cp "$new_po" "$po_dir/$po.po" \
-          && $SHA1SUM < "$new_po" > "$cksum_file" || return
-    fi
-  done
-}
-
-case $SKIP_PO in
-'')
-  if test -d po; then
-    update_po_files po $package || exit
-  fi
-
-  if test -d runtime-po; then
-    update_po_files runtime-po $package-runtime || exit
-  fi;;
-esac
 
 symlink_to_dir () {
   src=$1/$2
