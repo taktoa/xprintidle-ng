@@ -152,8 +152,8 @@ static void try_xss_query(XScreenSaverInfo ssi) {
     }
 }
 
-// Print the current idle time
-static void print_idle_time() {
+// Get the current idle time
+static unsigned long get_idle_time() {
     open_display();
 
     XScreenSaverInfo ssi;
@@ -183,7 +183,18 @@ static void print_idle_time() {
     // Get the current idle time
     check_xss_supported(event_basep, error_basep);
     try_xss_query(ssi);
-    printf("%lu\n", workaroundX11(dpy, ssi.idle));
+
+    // Debugging
+    unsigned long temp = workaroundX11(dpy, ssi.idle);
+    printf("Testing (idle):       %lu", ssi.idle);
+    printf("Testing (workaround): %lu", temp);
+
+    return temp;
+}
+
+// Print the current idle time
+static print_idle_time() {
+    printf("%lu\n", get_idle_time());
 }
 
 // Print a string in multibyte format

@@ -10,7 +10,7 @@ dnl This program is distributed in the hope that it will be useful, but
 dnl WITHOUT ANY WARRANTY, to the extent permitted by law; without even the
 dnl implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
-AC_INIT([xprintidle-ng],
+AC_INIT([xprintidleng],
         [0.3],
         [taktoa@gmail.com], [],
         [https://taktoa.github.io/xprintidle-ng])
