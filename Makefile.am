@@ -23,8 +23,11 @@ ACLOCAL_AMFLAGS = -I m4
 
 AM_CPPFLAGS = -Ilib -I$(top_srcdir)/lib -Isrc -I$(top_srcdir)/src
 
+# Manfiles
+man_MANS = xprintidle-ng.1
+
 # Additional files to distribute.
-EXTRA_DIST = $(doc_MANS) doc/xprintidle-ng.x
+EXTRA_DIST = $(man_MANS) man/xprintidle-ng.x
 
 # Subdirectories to descend into.
 SUBDIRS = po
@@ -37,7 +40,6 @@ xprintidle_ng_SOURCES += src/time-format.c
 xprintidle_ng_SOURCES += src/time-format.h
 
 xprintidle_ng_CFLAGS = \
-    -g -O0             \
 	$(XEXT_CFLAGS)     \
 	$(XSS_CFLAGS)      \
 	$(X11_CFLAGS)
@@ -55,12 +57,12 @@ DEFS = -DLOCALEDIR=\"$(localedir)\" @DEFS@
 CLEANFILES =
 
 xprintidle-ng.1: xprintidle-ng
-	$(HELP2MAN) --include=$(top_srcdir)/doc/xprintidle-ng.x \
+	$(HELP2MAN) --include=$(top_srcdir)/man/xprintidle-ng.x \
 	            $(top_builddir)/xprintidle-ng -o $@-t
 	chmod a=r $@-t
 	mv -f $@-t $@
 
-CLEANFILES += $(doc_MANS)
+CLEANFILES += $(man_MANS)
 
 noinst_LIBRARIES =
 MOSTLYCLEANFILES =
