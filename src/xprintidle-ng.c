@@ -46,7 +46,7 @@
 
 #define AUTHORS          "Magnus Henoch"
 
-#define TIME_FMT_DEFAULT "%tm"
+#define TIME_FMT_DEFAULT "%tms"
 
 
 // Forward declarations.
