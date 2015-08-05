@@ -13,6 +13,7 @@ addons:
     - build-essential
     - automake
     - autoconf
+    - autopoint
     - libtool
     - gettext
     - pkg-config
