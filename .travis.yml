@@ -19,11 +19,9 @@ addons:
     - pkg-config
     - help2man
     - texinfo
-    - gnulib
 
 script:
-  - ./bootstrap --no-git --gnulib-srcdir=/usr/share/gnulib
+  - ./bootstrap
   - ./configure
   - make
   - make check
-  - make install
