@@ -22,7 +22,7 @@ addons:
     - gnulib
 
 script:
-  - ./bootstrap --no-git --copy --gnulib-srcdir=/usr/share/gnulib
+  - ./bootstrap --no-git --gnulib-srcdir=/usr/share/gnulib
   - ./configure
   - make
   - make check
