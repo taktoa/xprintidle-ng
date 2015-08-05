@@ -12,3 +12,6 @@ your version.
 Web page: http://www.dtek.chalmers.se/~henoch/text/xprintidle.html
 E-mail: Magnus Henoch <henoch@dtek.chalmers.se>
 Jabber/XMPP: legoscia@jabber.cd.chalmers.se
+
+
+[![Join the chat at https://gitter.im/taktoa/xprintidle-ng](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/taktoa/xprintidle-ng?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
