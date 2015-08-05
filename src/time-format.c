@@ -190,21 +190,21 @@ char* timefmt(const char* format, ulong millis) {
 
     ulong start_time_millis = (time(NULL) * 1000) - millis;
     
-    sprintf(str_rem_milliseconds_int, "%03i", (millis /       1) % 1000);
-    sprintf(str_rem_seconds_int,      "%02i", (millis /    1000) % 60);
-    sprintf(str_rem_minutes_int,      "%02i", (millis /   60000) % 60);
-    sprintf(str_rem_hours_int,        "%02i", (millis / 3600000) % 24);
-    sprintf(str_total_milliseconds,   "%i",   millis);
-    sprintf(str_total_seconds_int,    "%i",   millis / 1000);
-    sprintf(str_total_seconds_float,  "%f",   millis / 1000.0);
-    sprintf(str_total_minutes_int,    "%i",   millis / 60000);
-    sprintf(str_total_minutes_float,  "%f",   millis / 60000.0);
-    sprintf(str_total_hours_int,      "%i",   millis / 3600000);
-    sprintf(str_total_hours_float,    "%f",   millis / 3600000.0);
-    sprintf(str_total_days_int,       "%i",   millis / 86400000);
-    sprintf(str_total_days_float,     "%f",   millis / 86400000.0);
-    sprintf(str_start_time_millis,    "%lu",  start_time_millis);
-    sprintf(str_start_time_seconds,   "%lu",  start_time_millis / 1000);
+    sprintf(str_rem_milliseconds_int, "%03lu", (millis /       1) % 1000);
+    sprintf(str_rem_seconds_int,      "%02lu", (millis /    1000) % 60);
+    sprintf(str_rem_minutes_int,      "%02lu", (millis /   60000) % 60);
+    sprintf(str_rem_hours_int,        "%02lu", (millis / 3600000) % 24);
+    sprintf(str_total_milliseconds,   "%lu",   millis);
+    sprintf(str_total_seconds_int,    "%lu",   millis / 1000);
+    sprintf(str_total_seconds_float,  "%f",    millis / 1000.0);
+    sprintf(str_total_minutes_int,    "%lu",   millis / 60000);
+    sprintf(str_total_minutes_float,  "%f",    millis / 60000.0);
+    sprintf(str_total_hours_int,      "%lu",   millis / 3600000);
+    sprintf(str_total_hours_float,    "%f",    millis / 3600000.0);
+    sprintf(str_total_days_int,       "%lu",   millis / 86400000);
+    sprintf(str_total_days_float,     "%f",    millis / 86400000.0);
+    sprintf(str_start_time_millis,    "%lu",   start_time_millis);
+    sprintf(str_start_time_seconds,   "%lu",   start_time_millis / 1000);
 
     str_pair_t pairs[] = {
         (str_pair_t) { "%rms",  str_rem_milliseconds_int },

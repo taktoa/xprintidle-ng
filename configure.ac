@@ -46,6 +46,18 @@ AC_DEFINE([COPYRIGHT_YEAR],
           [m4_esyscmd([date +%Y])],
           [Year of copyright])
 
+AC_DEFINE([PROJECT_URL],
+          ["https://taktoa.github.com/xprintidle-ng"],
+          [Project URL])
+
+AC_DEFINE([TRANSLATION_URL],
+          ["https://taktoa.github.com/xprintidle-ng/translation"],
+          [Translation URL])
+
+AC_DEFINE([BUG_URL],
+          ["https://taktoa.github.com/xprintidle-ng/issues"],
+          [Bug tracker URL])
+
 dnl GNU help2man creates man pages from --help output; in many cases, this
 dnl is sufficient, and obviates the need to maintain man pages separately.
 dnl However, this means invoking executables, which we generally cannot do

@@ -24,7 +24,7 @@ ACLOCAL_AMFLAGS = -I m4
 AM_CPPFLAGS = -Ilib -I$(top_srcdir)/lib -Isrc -I$(top_srcdir)/src
 
 # Additional files to distribute.
-EXTRA_DIST = doc/xprintidle-ng.x
+EXTRA_DIST = $(doc_MANS) doc/xprintidle-ng.x
 
 # Subdirectories to descend into.
 SUBDIRS = po

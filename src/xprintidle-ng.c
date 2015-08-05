@@ -45,9 +45,6 @@
 // Macros
 
 #define AUTHORS          "Magnus Henoch"
-#define PROJECT_URL      "https://taktoa.github.com/xprintidle-ng"
-#define TRANSLATION_URL  "https://taktoa.github.com/xprintidle-ng/translation"
-#define BUG_URL          "https://taktoa.github.com/xprintidle-ng/issues"
 
 #define TIME_FMT_DEFAULT "%tm"
 

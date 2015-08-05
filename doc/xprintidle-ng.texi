@@ -24,7 +24,7 @@ Texts.  A copy of the license is included in the section entitled
 
 @dircategory Basics
 @direntry
-* xprintidle-ng: (xprintidle-ng). Print the current idle time.
+* xprintidle-ng:                (xprintidle-ng). Print the current idle time.
 @end direntry
 
 @titlepage
@@ -48,11 +48,11 @@ which prints the current X11 idle time.
 @end ifnottex
 
 @menu
-* Overview::                       General purpose and information.
-* Sample output::                  Sample output from @command{xprintidle-ng}.
-* Invoking xprintidle-ng::         How to run @command{xprintidle-ng}.
-* GNU Free Documentation License:: Copying and sharing this documentation.
-* Concept index::                  Index of concepts.
+* Overview::                    General purpose and information.
+* Sample output::               Sample output from @command{xprintidle-ng}.
+* Invoking xprintidle-ng::      How to run @command{xprintidle-ng}.
+* GNU FDL::                     Copying and sharing this documentation.
+* Concept index::               Index of concepts.
 @end menu
 
 
@@ -62,7 +62,7 @@ which prints the current X11 idle time.
 @cindex greetings
 @cindex overview
 
-The @command{xprintidle-ng} program (@url{PROJECT_URL, website})
+The @command{xprintidle-ng} program (@url{@value{PROJECT_URL}, website})
 queries the X11 server for its current idle time, and prints this time
 in milliseconds by default. The time can be formatted through a format
 string similar to the @command{date} command.
@@ -239,7 +239,7 @@ standard output and then exit successfully.
 @end table
 
 
-@node GNU Free Documentation License
+@node GNU FDL
 @appendix GNU Free Documentation License
 
 @include fdl.texi
