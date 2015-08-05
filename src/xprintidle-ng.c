@@ -41,10 +41,10 @@
 #include "progname.h"
 #include "xalloc.h"
 
-#define AUTHORS             "Magnus Henoch"
-#define PROJECT_URL         "https://github.com/taktoa/xprintidle-ng"
-#define TRANSLATION_URL     "https://github.com/taktoa/xprintidle-ng/issues"
-#define BUG_URL             "https://github.com/taktoa/xprintidle-ng/issues"
+#define AUTHORS          "Magnus Henoch"
+#define PROJECT_URL      "https://taktoa.github.com/xprintidle-ng"
+#define TRANSLATION_URL  "https://taktoa.github.com/xprintidle-ng/translation"
+#define BUG_URL          "https://taktoa.github.com/xprintidle-ng/issues"
 
 #define TIME_FORMAT_DEFAULT "%m"
 
@@ -83,11 +83,11 @@ int main(int argc, char* argv[]) {
     // Set locale via LC_ALL.
     setlocale(LC_ALL, "");
 
-#if ENABLE_NLS
-    // Set the text message domain.
-    bindtextdomain(PACKAGE, LOCALEDIR);
-    textdomain(PACKAGE);
-#endif
+    if(ENABLE_NLS) {
+        // Set the text message domain.
+        bindtextdomain(PACKAGE, LOCALEDIR);
+        textdomain(PACKAGE);
+    }
 
     // Close stdout upon exiting
     atexit(close_stdout);
@@ -186,8 +186,12 @@ static unsigned long get_idle_time() {
 
     // Debugging
     unsigned long temp = workaroundX11(dpy, ssi.idle);
-    printf("Testing (idle):       %lu", ssi.idle);
-    printf("Testing (workaround): %lu", temp);
+    printf("Testing (state):        %i\n",  ssi.state);
+    printf("Testing (kind):         %i\n",  ssi.kind);
+    printf("Testing (idle):         %lu\n", ssi.idle);
+    printf("Testing (idle):         %lu\n", ssi.idle);
+    printf("Testing (til_or_since): %lu\n", ssi.til_or_since);
+    printf("Testing (workaround):   %lu\n", temp);
 
     return temp;
 }
