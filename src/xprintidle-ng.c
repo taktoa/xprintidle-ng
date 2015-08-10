@@ -57,16 +57,9 @@ static void  print_idle_time();
 static void  signal_callback_handler(int sig,
                                      siginfo_t *siginfo,
                                      void *context);
-static char* str_repl(char* target,
-                      const char escape,
-                      const char* oldstr,
-                      const char* newstr);
 static void  fmbprint(FILE* stream, const char* msg);
 static void  print_help(FILE *out);
 static void  print_version(FILE *out);
-static char  is_escaped(const char escape_char,
-                        char* pos,
-                        char* beg);
 
 const char* time_format;
 Display *dpy;
