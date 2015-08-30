@@ -31,7 +31,10 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h2>
+        <h1>
+<a id="faq" class="anchor" href="#faq" aria-hidden="true"><span class="octicon octicon-link"></span></a>FAQ</h1>
+
+<h2>
 <a id="what-is-xprintidle-ng" class="anchor" href="#what-is-xprintidle-ng" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is <em>xprintidle-ng</em>?</h2>
 
 <p><em>xprintidle-ng</em> is a utility that queries the X server for the user's idle time and prints it in milliseconds (or with a custom format string).</p>
@@ -45,6 +48,131 @@
 <a id="why-did-you-make-this" class="anchor" href="#why-did-you-make-this" aria-hidden="true"><span class="octicon octicon-link"></span></a>Why did you make this?</h2>
 
 <p>I saw the <em>xprintidle</em> tool that this repository is based on and thought it was a shame that it wasn't yet overengineered in the grand GNU tradition. Also, I felt like learning how to properly organize a GNU autotools project, complete with internationalization support, texinfo documentation, etc. It seemed like a fun and easy learning experience, especially since I could easily work off of GNU Hello as an example (I mean, xprintidle was already pretty much just GNU Hello, except it displays the result of an API call rather than a constant string).</p>
+
+<hr>
+
+<h1>
+<a id="readme" class="anchor" href="#readme" aria-hidden="true"><span class="octicon octicon-link"></span></a>README</h1>
+
+<p>NOTE: This README may be out of date relative to the one in the GitHub repository.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<p>Basically, type <code>./configure &amp;&amp; make &amp;&amp; sudo make install</code> to compile and
+install the program. If you are compiling from the git repository, you must
+run <code>./bootstrap</code> beforehand.</p>
+
+<h2>
+<a id="dependencies" class="anchor" href="#dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>Dependencies</h2>
+
+<h3>
+<a id="build-requirements" class="anchor" href="#build-requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build requirements</h3>
+
+<p>The following common executables must be available to build <em>xprintidle-ng</em>:</p>
+
+<ul>
+<li>
+<code>cat</code>, <code>sed</code>, <code>tr</code>, <code>grep</code>, <code>mkdir</code>, <code>find</code>
+</li>
+<li>
+<code>git</code>, <code>wget</code>, <code>perl</code>, <code>gzip</code>, <code>sha1sum</code>
+</li>
+<li>
+<code>bash</code>, <code>gcc</code>, <code>make</code>
+</li>
+</ul>
+
+<p>These executables are less common and are also required:</p>
+
+<ul>
+<li>
+<code>autoconf</code>, <code>automake</code>, <code>autopoint</code>, <code>autoreconf</code>, <code>autom4te</code>, <code>libtoolize</code>
+</li>
+<li>
+<code>pkg-config</code>, <code>m4</code>, <code>gettext</code> et al.</li>
+<li>
+<code>help2man</code>, <code>makeinfo</code>
+</li>
+</ul>
+
+<h3>
+<a id="runtime-requirements" class="anchor" href="#runtime-requirements" aria-hidden="true"><span class="octicon octicon-link"></span></a>Runtime requirements</h3>
+
+<p>The following libraries must be available to run <em>xprintidle-ng</em>:</p>
+
+<ul>
+<li>
+<code>libxss</code> (also known as <code>libXScrnSaver</code> or similar)</li>
+<li><code>libXext</code></li>
+<li><code>libX11</code></li>
+</ul>
+
+<p>Here is a short summary of packages required on various systems</p>
+
+<table>
+<thead>
+<tr>
+<th>System</th>
+<th>Packages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Debian</td>
+<td><code>libxss-dev</code></td>
+</tr>
+<tr>
+<td>Arch Linux</td>
+<td><code>libxss</code></td>
+</tr>
+<tr>
+<td>Gentoo</td>
+<td><code>x11-base/xorg-server</code></td>
+</tr>
+<tr>
+<td>NixOS</td>
+<td>
+<code>xlibs.libX11</code>, <code>xlibs.libXScrnSaver</code>, <code>xlibs.libXext</code>
+</td>
+</tr>
+</tbody>
+</table>
+
+<h2>
+<a id="contribute" class="anchor" href="#contribute" aria-hidden="true"><span class="octicon octicon-link"></span></a>Contribute</h2>
+
+<h3>
+<a id="translations" class="anchor" href="#translations" aria-hidden="true"><span class="octicon octicon-link"></span></a>Translations</h3>
+
+<p>If you want to submit a translation for this project, here are the steps:</p>
+
+<ol>
+<li> Install all relevant dependencies</li>
+<li> Fork this repository on GitHub</li>
+<li> <code>git clone http://github.com/&lt;USERNAME&gt;/xprintidle-ng &amp;&amp; cd xprintidle-ng</code>
+</li>
+<li> <code>./bootstrap &amp;&amp; ./configure &amp;&amp; make</code>
+</li>
+<li> The template file will be in <code>po/xprintidle-ng.pot</code>
+</li>
+<li> Based on the template file, write your <code>po</code> file, e.g.: <code>la.po</code> for Latin</li>
+<li> Put <code>la.po</code> in the <code>po</code> folder in the repository</li>
+<li> <code>git add po/la.po</code>
+</li>
+<li> <code>git commit -a -m "Added Latin translation" &amp;&amp; git push</code>
+</li>
+<li>Open a pull request against this repository</li>
+</ol>
+
+<p>You can also translate <code>doc/xprintidle-ng.texi</code>; put these translations in an
+appropriately named file, e.g.: <code>doc/xprintidle-ng.la.texi</code>.</p>
+
+<p>Languages translated so far:</p>
+
+<ul>
+<li>English</li>
+</ul>
       </section>
     </div>
 
